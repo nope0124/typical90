@@ -61,10 +61,9 @@ int main() {
     rep (i, K) cin >> V[i];
     vector<vector<ll>> dp(61, vector<ll>(B)); // 2**i桁まで
     dp[0][0] = 0;
-    vector<ll> power(61); // 10**(2**i)
-    rep (i, 61) {
-        ll a = 1;
-        rep (j, i) a *= 2;
+    vector<ll> power(60); // 10**(2**i)
+    rep (i, 60) {
+        ll a = POW((ll)2, (ll)i, __LONG_MAX__);
         power[i] = POW((ll)10, a, B);
     }
     rep (i, K) {
@@ -79,7 +78,9 @@ int main() {
             }
         }
     }
-
+    // rep (i, 10) {
+    //     cout << power[i] << endl;
+    // }
 
     vector<vector<ll>> ans(61, vector<ll>(B));
     ll idx = -1;
